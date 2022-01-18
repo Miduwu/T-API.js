@@ -1,5 +1,5 @@
 {
-  "name": "t-api.js",
+  "name": "@midowo/t-api.js",
   "version": "1.0.0",
   "description": "This package is the easiest way to interact with the T-API.",
   "main": "index.js",
