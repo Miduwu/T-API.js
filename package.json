@@ -1,0 +1,23 @@
+{
+  "name": "t-api.js",
+  "version": "1.0.0",
+  "description": "This package is the easiest way to interact with the T-API.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Miduwu/T-API.js.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Miduwu/T-API.js/issues"
+  },
+  "homepage": "https://github.com/Miduwu/T-API.js#readme",
+  "dependencies": {
+    "node-fetch": "^2.6.1"
+  }
+}
