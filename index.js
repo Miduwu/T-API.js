@@ -9,7 +9,7 @@ const getParams = (params) => {
     }
     return `?${pm.toString()}`
 }
-class Client {
+class TAPI {
     constructor(auth) {
         if(!auth) throw new Error('You need give an object with the parameters.')
         this.image = {}
@@ -75,4 +75,4 @@ class Client {
     }
 }
 
-module.exports = Client
+module.exports = TAPI;
