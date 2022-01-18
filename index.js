@@ -15,6 +15,7 @@ class Client {
         this.image = {}
         this.anime = {}
         this.json = {}
+        this.direct = {}
         this.key = auth
         
         for(const ep of eps["BUFFER"]) {
