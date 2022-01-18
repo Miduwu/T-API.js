@@ -74,3 +74,5 @@ class Client {
         return response
     }
 }
+
+module.exports = Client
