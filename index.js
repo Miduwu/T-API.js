@@ -10,7 +10,13 @@ const getParams = (params) => {
     }
     return `?${pm.toString()}`
 }
+/**
+ * Make the API startup.
+ */
 class TAPI {
+    /**
+ * @param {string} auth Your API Key
+ */
     constructor(auth) {
         if(!auth) throw new Error('You need give an object with the parameters.')
         this.image = {}
@@ -68,21 +74,30 @@ class TAPI {
             }
         }
     }
+    /**
+ * @param {string} url The URL to fetch
+ * @param {boolean} [headerAuth=true] If you will request with the authorization header.
+ * @returns {Promise} The data (Object/Buffer) of that request.
+ */
     async get(url, headerAuth=true) {
         let body = headerAuth ? await fetch(url, {headers: {"Authorization": this.key}}).catch(e=>null): await fetch(url).catch(e=>null)
         if(!body) throw new Error('Unnable to fetch '+url)
-        let response = body.headers["content-type"].includes('json') ? await body.json(): await body.buffer()
+        let response = body.headers.get('content-type').includes('json') ? await body.json(): await body.buffer()
         return response
     }
-    isValidKey(key) {
+    /**
+     * 
+     * @param {string} [key=this.key] The key.
+     * @returns {Promise} Boolean
+     */
+    async isValidKey(key) {
         let token = key || this.key
-        fetch('https://apiv2.willz.repl.co/json/owoify?text=a', {
+        const data = await fetch('https://apiv2.willz.repl.co/json/owoify?text=a', {
             headers: {
                 "Authorization": token
             }
-        }).then(res => {
-            return !response.status == 401
-        }).catch(console.log)
+        }).catch(e=>null)
+        return data && data.status == 401 ? false: true
     }
 }
 

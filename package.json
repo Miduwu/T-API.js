@@ -1,6 +1,6 @@
 {
   "name": "@midowo/t-api.js",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "This package is the easiest way to interact with the T-API.",
   "main": "index.js",
   "scripts": {
@@ -10,7 +10,15 @@
     "type": "git",
     "url": "git+https://github.com/Miduwu/T-API.js.git"
   },
-  "keywords": [],
+  "keywords": [
+    "API",
+    "TAPI",
+    "canvas",
+    "discord",
+    "aoi.js",
+    "bdfd",
+    "tokyo"
+  ],
   "author": "",
   "license": "ISC",
   "bugs": {

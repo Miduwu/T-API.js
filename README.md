@@ -33,3 +33,16 @@ api.json.translate({
 // do anything
 })
 ```
+
+## Methods
+Validate key:
+```js
+api.isValidKey(key=this.key) // default this.key
+ .then(console.log) // true or false
+ ```
+ Http get:
+ ```js
+ api.get('url', headerAuth=true).then(data => {
+     data // buffer or object depending ur request
+ })
+ ```
