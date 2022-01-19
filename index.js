@@ -22,10 +22,10 @@ class TAPI {
             this.image[ep] = async function(params) {
                 let pms = getParams(params)
                 const response = await fetch(`${host}image/${ep}${pms}`, {headers:{ "Authorization": auth }}).catch(e=>null)
-                if(response && response.status == 401) throw new Error('Wrong token. Full error:'+ await response.json())
-                if(response && response.status == 400) throw new Error('Invalid data. FUll error:'+ await response.json())
-                if(response && response.status !== 200) throw new Error('The status was not correct and it can\'t be parsed the status code is'+response.status)
-                if(!response) throw new Error('Something went wrong')
+                if(response && response.status == 401) throw new Error(errors[401])
+                if(response && response.status == 400) throw new Error(errors[400])
+                if(response && response.status !== 200) throw new Error(errors[500])
+                if(!response) throw new Error(errors[500])
                 const idk = await response.buffer()
                 return idk
             }
@@ -34,10 +34,10 @@ class TAPI {
             this.json[ep] = async function(params) {
                 let pms = getParams(params)
                 const response = await fetch(`${host}json/${ep}${pms}`, {headers:{ "Authorization": auth }}).catch(e=>null)
-                if(response && response.status == 401) throw new Error('Wrong token. Full error:'+ await response.json())
-                if(response && response.status == 400) throw new Error('Invalid data. FUll error:'+ await response.json())
-                if(response && response.status !== 200) throw new Error('The status was not correct and it can\'t be parsed the status code is '+response.status)
-                if(!response) throw new Error('Something went wrong')
+                if(response && response.status == 401) throw new Error(errors[401])
+                if(response && response.status == 400) throw new Error(errors[400])
+                if(response && response.status !== 200) throw new Error(errors[500])
+                if(!response) throw new Error(errors[500])
                 const idk = await response.json()
                 return idk
             }
@@ -46,10 +46,10 @@ class TAPI {
             this.anime[ep] = async function(params) {
                 let pms = getParams(params)
                 const response = await fetch(`${host}anime/${ep}${pms}`, {headers:{ "Authorization": auth }}).catch(e=>null)
-                if(response && response.status == 401) throw new Error('Wrong token. Full error:'+ await response.json())
-                if(response && response.status == 400) throw new Error('Invalid data. FUll error:'+ await response.json())
-                if(response && response.status !== 200) throw new Error('The status was not correct and it can\'t be parsed the status code is '+response.status)
-                if(!response) throw new Error('Something went wrong')
+                if(response && response.status == 401) throw new Error(errors[401])
+                if(response && response.status == 400) throw new Error(errors[400])
+                if(response && response.status !== 200) throw new Error(errors[500])
+                if(!response) throw new Error(errors[500])
                 const idk = await response.json()
                 return idk
             }
@@ -58,10 +58,10 @@ class TAPI {
             this.anime[ep] = async function(params) {
                 let pms = getParams(params)
                 const response = await fetch(`${host}direct/${ep}${pms}`, {headers:{ "Authorization": auth }}).catch(e=>null)
-                if(response && response.status == 401) throw new Error('Wrong token. Full error:'+ await response.json())
-                if(response && response.status == 400) throw new Error('Invalid data. FUll error:'+ await response.json())
-                if(response && response.status !== 200) throw new Error('The status was not correct and it can\'t be parsed the status code is '+response.status)
-                if(!response) throw new Error('Something went wrong')
+                if(response && response.status == 401) throw new Error(errors[401])
+                if(response && response.status == 400) throw new Error(errors[400])
+                if(response && response.status !== 200) throw new Error(errors[500])
+                if(!response) throw new Error(errors[500])
                 const idk = await response.json()
                 return idk
             }
@@ -70,8 +70,18 @@ class TAPI {
     async get(url, headerAuth=true) {
         let body = headerAuth ? await fetch(url, {headers: {"Authorization": this.key}}).catch(e=>null): await fetch(url).catch(e=>null)
         if(!body) throw new Error('Unnable to fetch '+url)
-        let response = body.headers["content-type"] == 'application/json' ? await body.json(): await body.buffer()
+        let response = body.headers["content-type"].includes('json') ? await body.json(): await body.buffer()
         return response
+    }
+    isValidKey(key) {
+        let token = key || this.key
+        fetch('https://apiv2.willz.repl.co/json/owoify?text=a', {
+            headers: {
+                "Authorization": token
+            }
+        }).then(res => {
+            return !response.status == 401
+        }).catch(console.log)
     }
 }
 

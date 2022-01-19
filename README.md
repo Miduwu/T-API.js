@@ -10,13 +10,13 @@ This package is the easiest way to interact with the T-API.
 
 ## Install
 ```
-npm i t-api.js
+npm i @midowo/t-api.js
 ```
 All endpoints are from: [T-API](https://apiv2.willz.repl.co)
 
 ## Usage
 ```js
-const TAPI = require('t-api.js')
+const TAPI = require('@midowo/t-api.js')
 const api = new TAPI('Y0UR S3CRET K3Y')
 
 api.image.supreme({
