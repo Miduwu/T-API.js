@@ -1,6 +1,7 @@
 const fetch = require('node-fetch')
 const eps = require('./auxiliar/endpoints.json')
 const host = 'https://apiv2.willz.repl.co/'
+const errors = require('./auxiliar/errors.json')
 const getParams = (params) => {
     let pm = new URLSearchParams('')
     let keys = Object.keys(params)
