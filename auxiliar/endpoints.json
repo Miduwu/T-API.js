@@ -34,14 +34,22 @@
         "communism",
         "snapchat",
         "spotify",
-        "rankcard"
+        "rankcard",
+        "walletcard"
     ],
     "JSON": [
         "owoify",
         "mock",
         "reverse",
         "8ball",
-        "translate"
+        "translate",
+        "discorduser",
+        "npm",
+        "define",
+        "gis",
+        "playstore",
+        "weather",
+        "quotes"
     ],
     "ANIME": [
         "reaction",

@@ -17,7 +17,7 @@ All endpoints are from: [T-API](https://apiv2.willz.repl.co)
 ## Usage
 ```js
 const TAPI = require('@midowo/t-api.js')
-const api = new TAPI('Y0UR S3CRET K3Y')
+const api = new TAPI.All('Y0UR S3CRET K3Y')
 
 api.image.supreme({
 "text": "Cool"

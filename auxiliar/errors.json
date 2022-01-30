@@ -1,31 +1,7 @@
 {
-    "500": {
-        "status": 500,
-        "short": "Something internal went wrong.",
-        "text": "Something went wrong on the web site's server but the server could not be more specific on what the exact problem was.",
-        "success": false
-    },
-    "400": {
-        "status": 400,
-        "short": "Bad request.",
-        "text": "Your request was somehow malformed. Since the server couldn't understand the request, it couldn't process it.",
-        "success": false
-    },
-	"401": {
-		"status": 401,
-		"short": "Unauthorized.",
-		"text": "The API key from the header that you gave is wrong, try asking for one in the support server.",
-		"success": false
-	},
-    "404": {
-        "status": 404,
-        "short": "Not found.",
-        "text": "The route of endpoint that you gave doesn't exist or its wrong.",
-        "success": false
-    },
-    "image": {
-        "text": "Invalid image formats.",
-        "allowed": [".png", ".jpg", ".jpge"],
-        "from": "canvas"
-    }
+    "500": "Something went wrong on the web site's server but the server could not be more specific on what the exact problem was.",
+    "400": "Your request was somehow malformed. Since the server couldn't understand the request, it couldn't process it.",
+	"401": "The API key from the header that you gave is wrong, try asking for one in the support server.",
+    "404": "The route of endpoint that you gave doesn't exist or its wrong.",
+    "image": "Invalid image formats."
 }
