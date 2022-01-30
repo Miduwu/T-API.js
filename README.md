@@ -12,7 +12,7 @@ This package is the easiest way to interact with the T-API.
 ```
 npm i @midowo/t-api.js
 ```
-All endpoints are from: [T-API](https://apiv2.willz.repl.co)
+All endpoints are from: [T-API](https://api.willz.repl.co)
 
 ## Usage
 ```js
