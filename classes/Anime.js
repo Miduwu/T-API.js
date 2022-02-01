@@ -15,7 +15,7 @@ const errors = require('../auxiliar/errors.json')
         if(!auth) throw new Error(errors[401])
         this.key = auth
         
-        for(const ep of eps["JSON"]) {
+        for(const ep of eps["ANIME"]) {
             this[ep] = async function(params) {
                 let pms = getParams(params)
                 const response = await fetch(`${host}anime/${ep}${pms}`, {headers:{ "Authorization": auth }}).catch(e=>null)
