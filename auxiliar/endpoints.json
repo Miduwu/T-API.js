@@ -35,7 +35,8 @@
         "snapchat",
         "spotify",
         "rankcard",
-        "walletcard"
+        "walletcard",
+        "overlay"
     ],
     "JSON": [
         "owoify",
