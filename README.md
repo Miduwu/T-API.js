@@ -34,6 +34,23 @@ api.json.translate({
 })
 ```
 
+## Connecting with Aoi.js
+```js
+// Setup the aoi.js bot
+const aoijs = require("aoi.js")
+
+const bot = new aoijs.Bot({...})
+// Setup the T-API
+const TAPI = require('@midowo/t-api.js')
+const api = new TAPI.All('T-API TOKEN')
+// Connect with Aoi.js
+const ApiUtil = new TAPI.Util(api)
+ApiUtil.connect_aoi(bot, {
+    embeds: '$imageAPI',
+    attachments: '$attachmentAPI'
+})
+```
+
 ## Methods
 Validate key:
 ```js
