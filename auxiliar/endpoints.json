@@ -36,7 +36,9 @@
         "spotify",
         "rankcard",
         "walletcard",
-        "overlay"
+        "overlay",
+        "magik",
+        "sus"
     ],
     "JSON": [
         "owoify",
@@ -50,7 +52,8 @@
         "gis",
         "playstore",
         "weather",
-        "quotes"
+        "quotes",
+        "ascii"
     ],
     "ANIME": [
         "reaction",
