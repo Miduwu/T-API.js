@@ -5,6 +5,7 @@ module.exports = {
      * @returns {string} Query parameters
      */
     getParams: (params) => {
+        if(!params) return ''
         let pm = new URLSearchParams('')
         let keys = Object.keys(params)
         for(const key of keys) {

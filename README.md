@@ -47,7 +47,8 @@ const api = new TAPI.All('T-API_TOKEN')
 const ApiUtil = new TAPI.Util(api)
 ApiUtil.connect_aoi(bot, {
     embeds: '$imageAPI',
-    attachments: '$attachmentAPI'
+    attachments: '$attachmentAPI',
+    objects: '$requestAPI'
 })
 ```
 
