@@ -12,7 +12,7 @@ module.exports = {
             code: async d => {
                 const data = d.util.openFunc(d)
                 if (data.err) return d.error(data.err)
-                let [index, name, params] = data.inside.splits
+                let [index, name, params, file = "file.png"] = data.inside.splits
                 if(isNaN(+index) || +index < 0 || +index > 10) return d.aoiError.fnError(d, 'custom', {inside: data.inside}, 'Invalid index provided in')
                 index = +index - 1 
                 if(!d.embeds[+index]) d.embeds[+index] = new d.embed()
@@ -24,8 +24,8 @@ module.exports = {
                 if(!json) return d.aoiError.fnError(d, 'custom', {inside: data.inside}, 'Invalid JSON provided in')
                 json = JSON.parse(JSON.stringify(json).replace(/#COLON#/g, ':').replace(/#EQUAL#/g, '='))
                 const result = await api["image"][name](json).catch(e=> {return d.aoiError.fnError(d, 'custom', {}, 'Invalid data, error:'+e)})
-                const at = new Discord.MessageAttachment(result, 'file.png')
-                d.embeds[+index].setImage('attachment://file.png')
+                const at = new Discord.MessageAttachment(result, file)
+                d.embeds[+index].setImage(`attachment://${file}`)
                 d.files.push(at)
                 return {
                     code: d.util.setCode(data),
@@ -47,7 +47,7 @@ module.exports = {
             code: async d => {
                 const data = d.util.openFunc(d)
                 if (data.err) return d.error(data.err)
-                let [name, params] = data.inside.splits
+                let [name, params, file = "file.png"] = data.inside.splits
                 if(!api["image"][name]) return d.aoiError.fnError(d, 'custom', {inside: data.inside}, 'Invalid name provided in')
                 let json;
                 try{
@@ -56,7 +56,7 @@ module.exports = {
                 if(!json) return d.aoiError.fnError(d, 'custom', {inside: data.inside}, 'Invalid JSON provided in')
                 json = JSON.parse(JSON.stringify(json).replace(/#COLON#/g, ':').replace(/#EQUAL#/g, '='))
                 const result = await api["image"][name](json).catch(e=> {return d.aoiError.fnError(d, 'custom', {}, 'Invalid data, error:'+e)})
-                const at = new Discord.MessageAttachment(result, 'file.png')
+                const at = new Discord.MessageAttachment(result, file)
                 d.files.push(at)
                 return {
                     code: d.util.setCode(data),
