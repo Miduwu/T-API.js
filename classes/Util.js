@@ -19,10 +19,12 @@ class Util {
         attachments: "$attachmentAPI",
         objects: '$requestAPI'
     }) {
-        this.bot = bot
-        require('../auxiliar/aoi.js').embeds(bot, this.api, values.embeds)
-        require('../auxiliar/aoi.js').attachments(bot, this.api, values.attachments)
-        require('../auxiliar/aoi.js').objects(bot, this.api, values.objects)
+        setTimeout(() => {
+            this.bot = bot
+            require('../auxiliar/aoi.js').embeds(bot, this.api, values.embeds)
+            require('../auxiliar/aoi.js').attachments(bot, this.api, values.attachments)
+            require('../auxiliar/aoi.js').objects(bot, this.api, values.objects)
+        }, 2000)
     }
 }
 module.exports = Util
