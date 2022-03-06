@@ -77,7 +77,7 @@ module.exports = {
             code: async d => {
                 const data = d.util.openFunc(d)
                 if (data.err) return d.error(data.err)
-                let [group, name, params, property = '', error = '$default', log = false] = data.inside.splits
+                let [group, name, params, error = '$default', log = false] = data.inside.splits
                 group = group?.toLowerCase()
                 name = name?.toLowerCase()
                 if(!["json", "anime"].some(e => e === group)) return d.aoiError.fnError(d, 'custom', {inside: data.inside}, 'Invalid group provided in')
@@ -95,9 +95,27 @@ module.exports = {
                     }
                 })
                 if(typeof result === 'object') {
-                    data.result = (property?.trim() === '') ? JSON.stringify(result, null, 2) : eval(`result?.${property?.addBrackets()}`);
-                    log && console.log(data.result)
+                    d.vars["tapi_request_object"] = result || {}
+                    d.data.vars = d.vars
+                    log && log != 'false' && log != 'no' && console.log(data.result)
                 }
+                return {
+                    code: d.util.setCode(data),
+                    data: d.data
+                }
+            }
+        })
+    },
+    result: (bot, name = '$getProperty') => {
+        bot.functionManager.createCustomFunction({
+            name: name,
+            type: 'djs',
+            code: d => {
+                const data = d.util.openFunc(d)
+                if (data.err) return d.error(data.err)
+                let [property] = data.inside.splits
+                let obj = d.data.vars['tapi_request_object'];
+                data.result = (property?.trim() === '$default') ? JSON.stringify(obj, null, 2) : eval(`obj?.${property?.addBrackets()}`) || 'undefined'
                 return {
                     code: d.util.setCode(data)
                 }

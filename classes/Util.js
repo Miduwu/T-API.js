@@ -17,12 +17,15 @@ class Util {
     connect_aoi(bot, values = {
         embeds: "$imageAPI",
         attachments: "$attachmentAPI",
-        objects: '$requestAPI'
+        objects: '$requestAPI',
+        result: '$getProperty'
     }) {
             this.bot = bot
-            require('../auxiliar/aoi.js').embeds(bot, this.api, values.embeds)
-            require('../auxiliar/aoi.js').attachments(bot, this.api, values.attachments)
-            require('../auxiliar/aoi.js').objects(bot, this.api, values.objects)
+            const aoi = require('../auxiliar/aoi.js')
+            aoi.embeds(bot, this.api, values.embeds)
+            aoi.attachments(bot, this.api, values.attachments)
+            aoi.objects(bot, this.api, values.objects)
+            aoi.result(bot, values.result)
     }
 }
 module.exports = Util

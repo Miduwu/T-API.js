@@ -1,3 +1,4 @@
+[![Discord](https://img.shields.io/discord/809567850841767936?color=blue&label=Discord&logo=discord&logoColor=white)](https://discord.com/invite/3pT2WHG9EG)
 # T-API Wrapper
 
 This package is the easiest way to interact with the T-API.
@@ -48,7 +49,8 @@ const ApiUtil = new TAPI.Util(api)
 ApiUtil.connect_aoi(bot, {
     embeds: '$imageAPI',
     attachments: '$attachmentAPI',
-    objects: '$requestAPI'
+    objects: '$requestAPI',
+    result: '$getProperty'
 })
 ```
 
