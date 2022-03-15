@@ -61,7 +61,7 @@ const errors = require('../auxiliar/errors.json')
         for(const ep of eps["DIRECT"]) {
             this.direct[ep] = async function(params) {
                 let pms = getParams(params)
-                const response = await fetch(`${host}direct/${ep}${pms}`, {headers:{ "Authorization": auth }}).catch(e=>null)
+                const response = await fetch(`${host}/${ep}${pms}`, {headers:{ "Authorization": auth }}).catch(e=>null)
                 if(response && response.status == 401) throw new Error(errors[401])
                 if(response && response.status == 400) throw new Error(errors[400])
                 if(response && response.status == 404) throw new Error(errors[404])
