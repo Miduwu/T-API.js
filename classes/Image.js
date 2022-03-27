@@ -39,7 +39,6 @@ const errors = require('../auxiliar/errors.json')
      * @returns {void}
      */
      connect(token=this.token) {
-        if(!token || typeof token !== 'string') throw new Error(errors[401])
         this.token = token
     }
 }
