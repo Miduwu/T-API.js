@@ -12,7 +12,6 @@ const errors = require('../auxiliar/errors.json')
  * @param {string} auth Your API Key
  */
     constructor(auth) {
-        if(!auth) throw new Error(errors[401])
         this.image = {}
         this.anime = {}
         this.json = {}
