@@ -40,7 +40,8 @@
         "magik",
         "sus",
         "boost",
-        "eject"
+        "eject",
+        "discordjs"
     ],
     "JSON": [
         "owoify",
