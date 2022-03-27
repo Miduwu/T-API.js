@@ -11,12 +11,12 @@ const errors = require('../auxiliar/errors.json')
     /**
  * @param {string} auth Your API Key
  */
-    constructor() {
+    constructor(token) {
         Object.defineProperty(this, 'token', { writable: true })
         if (!this.token && 'TAPI_TOKEN' in process.env) {
             this.token = process.env.TAPI_TOKEN
         } else {
-            this.token = null
+            this.token = token
         }
         
         for(const ep of eps["JSON"]) {
@@ -32,14 +32,6 @@ const errors = require('../auxiliar/errors.json')
                 return idk
             }
         }
-    }
-    /**
-     * 
-     * @param {String} token Token to log in the T-API
-     * @returns {void}
-     */
-     connect(token=this.token) {
-        this.token = token
     }
 }
 

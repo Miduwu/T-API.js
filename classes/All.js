@@ -11,7 +11,7 @@ const errors = require('../auxiliar/errors.json')
     /**
  * @param {string} auth Your API Key
  */
-    constructor(auth) {
+    constructor(token) {
         this.image = {}
         this.anime = {}
         this.json = {}
@@ -20,7 +20,7 @@ const errors = require('../auxiliar/errors.json')
         if (!this.token && 'TAPI_TOKEN' in process.env) {
             this.token = process.env.TAPI_TOKEN
         } else {
-            this.token = null
+            this.token = token
         }
 
         for(const ep of eps["BUFFER"]) {
@@ -75,14 +75,6 @@ const errors = require('../auxiliar/errors.json')
                 return idk
             }
         }
-    }
-    /**
-     * 
-     * @param {String} token Token to log in the T-API
-     * @returns {void}
-     */
-    connect(token=this.token) {
-        this.token = token
     }
     /**
  * @param {string} url The URL to fetch
