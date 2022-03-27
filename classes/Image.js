@@ -11,14 +11,18 @@ const errors = require('../auxiliar/errors.json')
     /**
  * @param {string} auth Your API Key
  */
-    constructor(auth) {
-        if(!auth) throw new Error(errors[401])
-        this.key = auth
+    constructor() {
+        Object.defineProperty(this, 'token', { writable: true })
+        if (!this.token && 'TAPI_TOKEN' in process.env) {
+            this.token = process.env.TAPI_TOKEN
+        } else {
+            this.token = null
+        }
         
         for(const ep of eps["BUFFER"]) {
             this[ep] = async function(params) {
                 let pms = getParams(params)
-                const response = await fetch(`${host}image/${ep}${pms}`, {headers:{ "Authorization": auth }}).catch(e=>null)
+                const response = await fetch(`${host}image/${ep}${pms}`, {headers:{ "Authorization": this.token }}).catch(e=>null)
                 if(response && response.status == 401) throw new Error(errors[401])
                 if(response && response.status == 400) throw new Error(errors[400])
                 if(response && response.status == 404) throw new Error(errors[404])
@@ -28,6 +32,15 @@ const errors = require('../auxiliar/errors.json')
                 return idk
             }
         }
+    }
+    /**
+     * 
+     * @param {String} token Token to log in the T-API
+     * @returns {void}
+     */
+     connect(token=this.token) {
+        if(!token || typeof token !== 'string') throw new Error(errors[401])
+        this.token = token
     }
 }
 

@@ -18,7 +18,7 @@ All endpoints are from: [T-API](https://api.willz.repl.co)
 ## Usage
 ```js
 const TAPI = require('@midowo/t-api.js')
-const api = new TAPI.All('Y0UR S3CRET K3Y')
+const api = new TAPI.All()
 
 api.image.supreme({
 "text": "Cool"
@@ -33,6 +33,8 @@ api.json.translate({
 }).then(obj => {
 // do anything
 })
+
+api.connect('YOUR_TAPI_KEY')
 ```
 
 ## Connecting with Aoi.js
@@ -43,7 +45,7 @@ const aoijs = require("aoi.js")
 const bot = new aoijs.Bot({...})
 // Setup the T-API
 const TAPI = require('@midowo/t-api.js')
-const api = new TAPI.All('T-API_TOKEN')
+const api = new TAPI.All()
 // Connect with Aoi.js
 const ApiUtil = new TAPI.Util(api)
 ApiUtil.connect_aoi(bot, {
@@ -52,6 +54,7 @@ ApiUtil.connect_aoi(bot, {
     objects: '$requestAPI',
     result: '$getProperty'
 })
+api.connect('YOUR_TAPI_KEY')
 ```
 
 ## Methods

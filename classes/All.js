@@ -17,12 +17,17 @@ const errors = require('../auxiliar/errors.json')
         this.anime = {}
         this.json = {}
         this.direct = {}
-        this.key = auth
-        
+        Object.defineProperty(this, 'token', { writable: true })
+        if (!this.token && 'TAPI_TOKEN' in process.env) {
+            this.token = process.env.TAPI_TOKEN
+        } else {
+            this.token = null
+        }
+
         for(const ep of eps["BUFFER"]) {
             this.image[ep] = async function(params) {
                 let pms = getParams(params)
-                const response = await fetch(`${host}image/${ep}${pms}`, {headers:{ "Authorization": auth }}).catch(e=>null)
+                const response = await fetch(`${host}image/${ep}${pms}`, {headers:{ "Authorization": this.token }}).catch(e=>null)
                 if(response && response.status == 401) throw new Error(errors[401])
                 if(response && response.status == 400) throw new Error(errors[400])
                 if(response && response.status == 404) throw new Error(errors[404])
@@ -35,7 +40,7 @@ const errors = require('../auxiliar/errors.json')
         for(const ep of eps["JSON"]) {
             this.json[ep] = async function(params) {
                 let pms = getParams(params)
-                const response = await fetch(`${host}json/${ep}${pms}`, {headers:{ "Authorization": auth }}).catch(e=>null)
+                const response = await fetch(`${host}json/${ep}${pms}`, {headers:{ "Authorization": this.token }}).catch(e=>null)
                 if(response && response.status == 401) throw new Error(errors[401])
                 if(response && response.status == 400) throw new Error(errors[400])
                 if(response && response.status == 404) throw new Error(errors[404])
@@ -48,7 +53,7 @@ const errors = require('../auxiliar/errors.json')
         for(const ep of eps["ANIME"]) {
             this.anime[ep] = async function(params) {
                 let pms = getParams(params)
-                const response = await fetch(`${host}anime/${ep}${pms}`, {headers:{ "Authorization": auth }}).catch(e=>null)
+                const response = await fetch(`${host}anime/${ep}${pms}`, {headers:{ "Authorization": this.token }}).catch(e=>null)
                 if(response && response.status == 401) throw new Error(errors[401])
                 if(response && response.status == 400) throw new Error(errors[400])
                 if(response && response.status == 404) throw new Error(errors[404])
@@ -61,7 +66,7 @@ const errors = require('../auxiliar/errors.json')
         for(const ep of eps["DIRECT"]) {
             this.direct[ep] = async function(params) {
                 let pms = getParams(params)
-                const response = await fetch(`${host}/${ep}${pms}`, {headers:{ "Authorization": auth }}).catch(e=>null)
+                const response = await fetch(`${host}/${ep}${pms}`, {headers:{ "Authorization": this.token }}).catch(e=>null)
                 if(response && response.status == 401) throw new Error(errors[401])
                 if(response && response.status == 400) throw new Error(errors[400])
                 if(response && response.status == 404) throw new Error(errors[404])
@@ -73,23 +78,32 @@ const errors = require('../auxiliar/errors.json')
         }
     }
     /**
+     * 
+     * @param {String} token Token to log in the T-API
+     * @returns {void}
+     */
+    connect(token=this.token) {
+        if(!token || typeof token !== 'string') throw new Error(errors[401])
+        this.token = token
+    }
+    /**
  * @param {string} url The URL to fetch
  * @param {boolean} [headerAuth=true] If you will request with the authorization header.
  * @returns {Promise} The data (Object/Buffer) of that request.
  */
     async get(url, headerAuth=true) {
-        let body = headerAuth ? await fetch(url, {headers: {"Authorization": this.key}}).catch(e=>null): await fetch(url).catch(e=>null)
+        let body = headerAuth ? await fetch(url, {headers: {"Authorization": this.token}}).catch(e=>null): await fetch(url).catch(e=>null)
         if(!body) throw new Error('Unnable to fetch '+url)
         let response = body.headers.get('content-type').includes('json') ? await body.json(): await body.buffer()
         return response
     }
     /**
      * 
-     * @param {string} [key=this.key] The key.
+     * @param {string} [key=this.token] The key.
      * @returns {Promise} Boolean
      */
     async isValidKey(key) {
-        let token = key || this.key
+        let token = key || this.token
         const data = await fetch('https://api.willz.repl.co/json/owoify?text=a', {
             headers: {
                 "Authorization": token
