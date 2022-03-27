@@ -22,7 +22,7 @@ const errors = require('../auxiliar/errors.json')
         for(const ep of eps["ANIME"]) {
             this[ep] = async function(params) {
                 let pms = getParams(params)
-                const response = await fetch(`${host}anime/${ep}${pms}`, {headers:{ "Authorization": this.token }}).catch(e=>null)
+                const response = await fetch(`${host}anime/${ep}${pms}`, {headers:{ "Authorization": token }}).catch(e=>null)
                 if(response && response.status == 401) throw new Error(errors[401])
                 if(response && response.status == 400) throw new Error(errors[400])
                 if(response && response.status == 404) throw new Error(errors[404])
