@@ -1,5 +1,5 @@
 const fetch = require('node-fetch')
-const host = 'https://apiv2.willz.repl.co/'
+const host = 'https://api.miduwu.ga/'
 const { getParams } = require('../auxiliar/Util')
 const eps = require('../auxiliar/endpoints.json')
 const errors = require('../auxiliar/errors.json')

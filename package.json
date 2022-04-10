@@ -1,6 +1,6 @@
 {
   "name": "@midowo/t-api.js",
-  "version": "3.0.2",
+  "version": "3.0.3",
   "description": "This package is the easiest way to interact with the T-API.",
   "main": "index.js",
   "scripts": {
