@@ -41,7 +41,8 @@
         "sus",
         "boost",
         "eject",
-        "discordjs"
+        "discordjs",
+        "clash"
     ],
     "JSON": [
         "owoify",
@@ -57,7 +58,8 @@
         "weather",
         "quotes",
         "ascii",
-        "calendar"
+        "calendar",
+        "chatbot"
     ],
     "ANIME": [
         "reaction",
