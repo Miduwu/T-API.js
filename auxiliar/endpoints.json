@@ -59,7 +59,8 @@
         "quotes",
         "ascii",
         "calendar",
-        "chatbot"
+        "chatbot",
+        "hastebin"
     ],
     "ANIME": [
         "reaction",
