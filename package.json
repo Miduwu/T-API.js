@@ -1,6 +1,6 @@
 {
   "name": "tokyo-api.ts",
-  "version": "6.0.5",
+  "version": "6.0.8",
   "description": "This package is the easiest way to interact with the T-API.",
   "typings": "index.d.ts",
   "main": "dist/index.js",

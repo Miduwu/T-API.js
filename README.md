@@ -11,7 +11,7 @@ This package is the easiest way to interact with the T-API.
 
 ## Install
 ```
-npm i @midowo/t-api.js
+npm i tokyo-api.ts
 ```
 All endpoints are from: [T-API](https://api.willz.repl.co)
 

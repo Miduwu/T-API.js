@@ -36,7 +36,7 @@ export async function Anime(endpoint: string, parameters?: Record<string, any>):
 }
 
 export async function getInfo(endpoint: string): Promise<any> {
-    const path: string = `${HOST}/endpoint?name=${endpoint}`
+    const path: string = `${HOST}endpoint?name=${endpoint}`
     const res: Response = await fetch(path).catch()
     if(res.status === 404) throw new TypeError('The endpoint provided was not found.')
     if(res.status === 400) throw new TypeError('Parameter options provided are invalid.')
