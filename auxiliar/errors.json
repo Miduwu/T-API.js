@@ -1,0 +1,7 @@
+{
+    "500": "Something went wrong on the web site's server but the server could not be more specific on what the exact problem was.",
+    "400": "Your request was somehow malformed. Since the server couldn't understand the request, it couldn't process it.",
+	"401": "The API key from the header that you gave is wrong, try asking for one in the support server.",
+    "404": "The route of endpoint that you gave doesn't exist or its wrong.",
+    "image": "Invalid image formats."
+}
