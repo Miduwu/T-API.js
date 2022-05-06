@@ -1,7 +1,8 @@
 {
   "name": "tokyo-api.ts",
-  "version": "5.0.0",
+  "version": "6.0.5",
   "description": "This package is the easiest way to interact with the T-API.",
+  "typings": "index.d.ts",
   "main": "dist/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
