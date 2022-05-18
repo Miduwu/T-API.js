@@ -13,7 +13,7 @@ This package is the easiest way to interact with the T-API.
 ```
 npm i tokyo-api.ts
 ```
-All endpoints are from: [T-API](https://api.willz.repl.co)
+All endpoints are from: [T-API](https://api.miduwu.ga)
 
 ## Usage
 ```js

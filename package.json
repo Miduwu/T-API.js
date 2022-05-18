@@ -1,11 +1,15 @@
 {
   "name": "tokyo-api.ts",
-  "version": "7.0.0",
+  "version": "7.1.0",
   "description": "This package is the easiest way to interact with the T-API.",
   "typings": "index.d.ts",
   "main": "dist/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Miduwu/T-API.js.ts"
   },
   "keywords": [
     "API",
